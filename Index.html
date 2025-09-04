@@ -527,15 +527,15 @@
                 até que eu, como um príncipe encantado(um tanto diferenciado
                 akakak), escalei seus muros<br>
                 não com cordas, mas com palavras de amor sincero,<br>
-                Milla, você é o conto de fadas que sempre sonhei viver."
+                Milla, você é o sonho que sempre sonhei viver."
             </p>
-            <p class="poem-author">- Marcos Vinicius, seu príncipe 👑</p>
+            <p class="poem-author">- Marcos Vinicius, seu amor ❤️</p>
         </div>
         
         <div class="poem-card">
             <p class="poem-text">
-                "no exato momento em que me perguntei se gostava de você
-                , minha mente entrou em um estado de panico e alegria, 
+                "no exato momento em que me perguntei se gostava de você,
+                minha mente entrou em um estado de panico e alegria, 
                 eu não parava de pensar nos seus cabelos encaracolados, 
                 no brilho de seus olhos, e até hoje me surpreendo cada dia
                 mais, meu amor"
@@ -547,7 +547,7 @@
             <p class="poem-text">
                 "Se eu pudesse escrever nossa história nos céus,<br>
                 cada estrela seria uma palavra de amor para você.<br>
-                Milla, minha princesa, minha Rapunzel querida,<br>
+                Milla, minha princesa, minha Rapunzel,<br>
                 você é a magia que faltava no meu mundo."
             </p>
             <p class="poem-author">- Marcos, guardião do seu coração 🛡️</p>
@@ -556,10 +556,11 @@
         <div class="poem-card">
             <p class="poem-text">
                 "Não precisei de uma torre alta para encontrar você,<br>
-                bastou um olhar nos seus olhos, uma conversa em um ônibus 
+                bastou vários olhares nos seus olhos, repletos de sentirmentos,
+                nervosismo,  uma conversa em um ônibus 
                 akakak, para descobrir meu lar.<br>
                 Um mês é apenas o primeiro capítulo, minha amada,<br>
-                de uma saga de amor que nunca terá fim."
+                de uma saga de amor que que espero viver ao teu lado."
             </p>
             <p class="poem-author">- Eternamente seu, Marcos Vinicius 💫</p>
         </div>
@@ -569,7 +570,7 @@
                 "Que nossa história seja como os contos de fada,<br>
                 cheia de aventuras, risos e muito amor.<br>
                 Obrigado por deixar eu ser o herói da sua história, Milla,<br>
-                você é a rainha do meu reino encantado."
+                você é a rainha que meu coração tanto anseia."
             </p>
             <p class="poem-author">- Com amor de conto de fadas, Marcos 👸</p>
         </div>
@@ -895,3 +896,73 @@
             }
         });
         
+        // Efeito de teclado - Easter egg
+        let keySequence = [];
+        const magicSequence = ['r', 'a', 'p', 'u', 'n', 'z', 'e', 'l'];
+        
+        document.addEventListener('keydown', function(e) {
+            keySequence.push(e.key.toLowerCase());
+            
+            // Manter apenas os últimos 8 caracteres
+            if (keySequence.length > magicSequence.length) {
+                keySequence.shift();
+            }
+            
+            // Verificar se a sequência mágica foi digitada
+            if (keySequence.join('') === magicSequence.join('')) {
+                keySequence = []; // Reset
+                
+                // Super celebração
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        createCelebration();
+                        triggerMagic();
+                    }, i * 1000);
+                }
+                
+                // Mostrar mensagem secreta
+                setTimeout(() => {
+                    const secretMessage = document.createElement('div');
+                    secretMessage.innerHTML = `
+                        <div style="
+                            position: fixed;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            background: linear-gradient(45deg, #9370DB, #8A2BE2);
+                            padding: 30px;
+                            border-radius: 20px;
+                            text-align: center;
+                            box-shadow: 0 0 50px rgba(147,112,219,0.8);
+                            z-index: 1002;
+                            color: white;
+                            max-width: 400px;
+                            border: 2px solid #FFD700;
+                        ">
+                            <h3 style="margin-bottom: 15px;">🔮 Magia Secreta Desbloqueada! 🔮</h3>
+                            <p style="font-style: italic; line-height: 1.6; margin-bottom: 15px;">
+                                "Você descobriu o segredo da torre!<br>
+                                Como um verdadeiro príncipe encantado! 👑"
+                            </p>
+                            <p style="font-size: 2em; margin: 10px 0;">🎊✨🏰✨🎊</p>
+                            <button onclick="this.parentElement.parentElement.remove()"
+                                     style="
+                                        background: #FFD700;
+                                        color: #8B4513;
+                                        border: none;
+                                        padding: 10px 20px;
+                                        border-radius: 10px;
+                                        cursor: pointer;
+                                        font-weight: bold;
+                                    ">
+                                🗝️ Guardar Segredo
+                            </button>
+                        </div>
+                    `;
+                    document.body.appendChild(secretMessage);
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
