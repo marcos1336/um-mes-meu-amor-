@@ -805,3 +805,93 @@
                 }
             }, 1200);
         });
+
+        // Adicionar animações CSS dinâmicas
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            @keyframes magicalAppear {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.5) rotate(-10deg);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                }
+            }
+            
+            @keyframes celebration {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) rotate(0deg) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(100vh) rotate(720deg) scale(0.5);
+                }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+        
+        // Inicializar tudo quando a página carregar
+        window.addEventListener('load', function() {
+            createClouds();
+            animateCards();
+            
+            // Criar partículas mágicas periodicamente
+            setInterval(createMagicParticle, 1500);
+            
+            // Criar elementos flutuantes
+            setInterval(createFloatingElement, 2500);
+            
+            // Criar borboletas ocasionalmente
+            setInterval(createButterfly, 8000);
+            
+            // Efeito especial de entrada do título
+            setTimeout(() => {
+                const title = document.querySelector('.title');
+                title.style.animation = 'heartbeat 3s infinite, bounce 2s infinite';
+            }, 2000);
+            
+            // Trigger inicial de magia
+            setTimeout(triggerMagic, 3000);
+        });
+        
+        // Efeito de hover nos cartões com partículas
+        document.querySelectorAll('.poem-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                // Criar várias partículas ao passar o mouse
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        createMagicParticle();
+                    }, i * 80);
+                }
+            });
+        });
+        
+        // Easter egg: clique duplo no título para surpresa especial
+        let titleClickCount = 0;
+        document.querySelector('.title').addEventListener('click', function() {
+            titleClickCount++;
+            
+            if (titleClickCount === 2) {
+                // Reset counter
+                titleClickCount = 0;
+                
+                // Celebração especial
+                createCelebration();
+                
+                // Mudar temporariamente a cor do fundo
+                document.body.style.background = 'linear-gradient(180deg, #FFB6C1 0%, #DDA0DD 30%, #F0E68C 70%, #98FB98 100%)';
+                
+                setTimeout(() => {
+                    document.body.style.background = 'linear-gradient(180deg, #87CEEB 0%, #DDA0DD 30%, #F0E68C 70%, #90EE90 100%)';
+                }, 3000);
+                
+                // Mostrar mensagem especial
+                setTimeout(() => {
+                    showRapunzelMessage();
+                }, 1000);
+            }
+        });
+        
