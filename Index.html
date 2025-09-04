@@ -634,4 +634,74 @@
         
         // Criar elementos flutuantes (corações, estrelas, etc.)
         function createFloatingElement() {
-            const 
+            constelementsContainer = document.querySelector('.floating-elements');
+            const elements = ['💕', '💖', '🌸', '🌹', '✨', '👑', '🏰'];
+            const element = document.createElement('div');
+            
+            element.className = 'floating-element';
+            element.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+            element.style.left = Math.random() * 100 + '%';
+            element.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            
+            elementsContainer.appendChild(element);
+            
+            // Remover elemento após animação
+            setTimeout(() => {
+                if (element.parentNode) {
+                    element.remove();
+                }
+            }, 10000);
+        }
+        
+        // Animação de entrada dos cartões
+        function animateCards() {
+            const cards = document.querySelectorAll('.poem-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * 400);
+            });
+        }
+        
+        // Criar borboletas
+        function createButterfly() {
+            const butterfly = document.createElement('div');
+            butterfly.className = 'butterfly';
+            butterfly.innerHTML = '🦋';
+            butterfly.style.top = Math.random() * 50 + '%';
+            butterfly.style.left = '-50px';
+            butterfly.style.animationDelay = Math.random() * 5 + 's';
+            
+            document.body.appendChild(butterfly);
+            
+            setTimeout(() => {
+                if (butterfly.parentNode) {
+                    butterfly.remove();
+                }
+            }, 15000);
+        }
+        
+        // Efeito mágico ao clicar
+        function triggerMagic() {
+            // Criar múltiplas partículas mágicas
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createMagicParticle();
+                }, i * 50);
+            }
+            
+            // Efeito especial na torre
+            const tower = document.querySelector('.tower');
+            tower.style.animation = 'none';
+            tower.style.transform = 'scale(1.1)';
+            tower.style.filter = 'drop-shadow(0 0 20px #FFD700)';
+            
+            setTimeout(() => {
+                tower.style.transform = 'scale(1)';
+                tower.style.filter = 'none';
+            }, 500);
+            
+            // Mostrar mensagem especial da Rapunzel
+            showRapunzelMessage();
+        }
+   
