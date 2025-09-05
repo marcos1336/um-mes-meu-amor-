@@ -499,6 +499,27 @@
     </style>
 </head>
 <body>
+
+    <audio id="musica" autoplay loop>
+  <source src="velhainfancia.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio em HTML5.
+</audio>
+
+<script>
+  // Alguns navegadores bloqueiam autoplay, então iniciamos ao clicar
+  document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("musica");
+    audio.volume = 0.5; // ajusta volume (0.0 a 1.0)
+
+    // Se o navegador bloquear o autoplay, o som começa ao primeiro clique
+    document.body.addEventListener("click", function () {
+      if (audio.paused) {
+        audio.play();
+      }
+    });
+  });
+</script>
+    
     <div class="clouds"></div>
     <div class="page-shimmer"></div>
     <div class="magic-particles"></div>
